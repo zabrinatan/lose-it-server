@@ -4,7 +4,7 @@ class CreateNutritions < ActiveRecord::Migration[5.2]
       t.text :label
       t.text :quantity
       t.text :unit
-      t.int :recipe_id
+      t.integer :recipe_id
 
       t.timestamps
     end

@@ -3,7 +3,7 @@ class CreateRecipes < ActiveRecord::Migration[5.2]
     create_table :recipes do |t|
       t.text :label
       t.text :image
-      t.int :yield
+      t.integer :yield
       t.text :calories
       t.text :url
       t.float :totalTime

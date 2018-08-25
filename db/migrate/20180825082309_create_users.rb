@@ -3,8 +3,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
     create_table :users do |t|
       t.text :first_name
       t.text :last_name
-      t.int :weight
-      t.int :height
+      t.integer :weight
+      t.integer :height
       t.string :password
 
       t.timestamps
