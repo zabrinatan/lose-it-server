@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  get 'recipes/index'
-  get 'recipes/show'
-  get 'recipes/new'
-  get 'users/index'
-  get 'users/show'
-  get 'users/new'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root :to => 'pages#index'
+  post 'user_token' => 'user_token#create'
+
+  resources :ingredients
+  resources :users
+  resources :nutritions
+  resources :recipes
+  get '/login' => 'session#new' #login form
+  post '/login' => 'session#create' # perform a login
+  delete '/login' => 'session#destroy' #perform a log out
+
 end
