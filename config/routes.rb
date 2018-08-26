@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users, :defaults => { :format => 'json' }
   resources :nutritions
   resources :recipes
-  post '/recipes/apicall' => 'recipes#apicall'
+  post '/recipes/apicall' => 'recipes#apicall', :defaults => { :format => 'json' }
 
   get '/login' => 'session#new' #login form
   post '/login' => 'session#create', :defaults => { :format => 'json' } # perform a login
