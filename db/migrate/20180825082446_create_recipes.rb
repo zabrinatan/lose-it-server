@@ -7,7 +7,7 @@ class CreateRecipes < ActiveRecord::Migration[5.2]
       t.text :calories
       t.text :url
       t.text :totalTime
-
+      t.integer :user_id
       t.timestamps
     end
   end

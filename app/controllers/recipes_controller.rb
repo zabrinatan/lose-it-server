@@ -1,19 +1,16 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.all
+    #fix @user to definition to make dynamic based on current user logged in
+    @user = User.find(5)
+    @recipes = Recipe.where(:user_id => @user.id)
+
   end
 
   def apicall
     q = params[:q]
-    @recipe = Recipe.new
     recipe_url = "https://api.edamam.com/search?q=#{q}&app_id=834d210a&app_key=5746ad44a220392bdfb46f4ed052f6e4&from=0&to=20&calories=591-722&health=alcohol-free"
     recipe_info = HTTParty.get recipe_url
-    # @recipe.label = recipe_name;
-    # @recipe.image = recipe_info['hits'][0]['recipe']['image']
-    # @recipe.url = recipe_info['hits'][0]['recipe']['url']
-    # @recipe.yield = recipe_info['hits'][0]['recipe']['yield']
-    # @recipe.totalTime = recipe_info['hits'][0]['recipe']['totalTime']
-    # @recipe.calories = recipe_info['hits'][0]['recipe']['calories']
+
 
         respond_to do |format|
 
@@ -27,6 +24,8 @@ class RecipesController < ApplicationController
 
   end
   def create
+    #fix @user to definition to make dynamic based on current user logged in
+    @user = User.find(5)
     @recipe = Recipe.new
     @recipe.label = params[:data]['recipe']['label'];
     @recipe.image = params[:data]['recipe']['image'];
@@ -34,6 +33,7 @@ class RecipesController < ApplicationController
     @recipe.yield = params[:data]['recipe']['yield']
     @recipe.totalTime = params[:data]['recipe']['totalTime']
     @recipe.calories = params[:data]['recipe']['calories']
+    @recipe.user_id = @user.id
     @recipe.save
 
   end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root :to => 'pages#index'
-  post 'user_token' => 'user_token#create'
+  # post 'user_token' => 'user_token#create'
 
 
   resources :ingredients
