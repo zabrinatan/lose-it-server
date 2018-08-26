@@ -30,4 +30,6 @@ module LoseItServer
     # Don't generate system test files.
     config.generators.system_tests = nil
   end
+
+
 end

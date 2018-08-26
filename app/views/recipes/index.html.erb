@@ -1,2 +1,4 @@
-<h1>Recipes#index</h1>
-<p>Find me in app/views/recipes/index.html.erb</p>
+<h1>all recioes: <%= number_to_human Recipe.count %></h1>
+<% @recipes.each do |recipe| %>
+<p><%= recipe.label %></p>
+<% end %>

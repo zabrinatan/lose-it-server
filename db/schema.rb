@@ -39,10 +39,10 @@ ActiveRecord::Schema.define(version: 2018_08_25_083323) do
   create_table "recipes", force: :cascade do |t|
     t.text "label"
     t.text "image"
-    t.integer "yield"
+    t.text "yield"
     t.text "calories"
     t.text "url"
-    t.float "totalTime"
+    t.text "totalTime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

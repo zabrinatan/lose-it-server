@@ -1,4 +1,5 @@
 class SessionController < ApplicationController
+
   def new
   end
 
@@ -9,19 +10,28 @@ class SessionController < ApplicationController
     # redirect to the homepage
     #else
     # redirect to the login page
+
     user = User.find_by :email => params[:email]
+    respond_to do |format|
     if user.present? && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect_to root_path
+      format.json { render json: {success: :true} }
+      # redirect_to root_path
     else
-      flash[:error] = "Invalid login or password"
-      redirect_to login_path
+      format.json { render json: user.errors, status: :unprocessable_entity }
+      # redirect_to login_path
+    end
+  end
     end
 
-  end
 
   def destroy
     session[:user_id] = nil
     redirect_to root_path
   end
+
+  private
+def user_params
+  params.permit(:email, :password, :password_confirmation)
+end
+
 end

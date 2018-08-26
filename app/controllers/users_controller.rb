@@ -10,17 +10,15 @@ class UsersController < ApplicationController
   end
 
 def create
-  # abort("#{params[:email]}, #{params[:password_digest]}")
-  user = User.create (user_params)
+  # abort("#{params[:email]}, #{params[:password]}")
+  @user = User.create (user_params)
       respond_to do |format|
-      if user.save
-
+      if @user.save
         # format.html { redirect_to user, notice: "User was successfully created."}
         format.json { render json: {success: :true} }
       else
-
         # format.html { render :new }
-        format.json { render json: user.errors, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
 
@@ -45,7 +43,8 @@ end
 end
 
   def show
-    @user = User.find params[:id]
+    @user = User.where(:user_id => @current_user.id)
+
 
   end
 
@@ -57,7 +56,7 @@ end
 
   private
 def user_params
-  params.permit(:email, :password_digest, :password_confirmation)
+  params.permit(:email, :password, :password_confirmation)
 end
 
 

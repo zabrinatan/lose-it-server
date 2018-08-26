@@ -1,5 +1,6 @@
 json.users @users do |e|
   json.id e.id
+  json.email e.email
   json.first_name e.first_name
   json.last_name e.last_name
   json.weight e.weight
