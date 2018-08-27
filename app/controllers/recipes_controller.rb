@@ -26,7 +26,6 @@ class RecipesController < ApplicationController
 
   end
   def create
-    #fix @user to definition to make dynamic based on current user logged in
     @recipe = Recipe.new
     @recipe.label = params[:data]['recipe']['label'];
     @recipe.image = params[:data]['recipe']['image'];
