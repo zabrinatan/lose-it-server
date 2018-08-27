@@ -5,6 +5,7 @@ json.array! @recipes do |e|
   json.yield e.yield
   json.totalTime e.totalTime
   json.calories e.calories
+  json.user_id e.user_id
 
 
 end

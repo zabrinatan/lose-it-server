@@ -1,8 +1,12 @@
 class RecipesController < ApplicationController
+  skip_before_action :verify_authenticity_token, :only => [:create,:apicall]
+  before_action :authenticate_user, :only => [:create]
+
   def index
     #fix @user to definition to make dynamic based on current user logged in
-    @user = User.find(5)
-    @recipes = Recipe.where(:user_id => @user.id)
+    user = current_user.id
+    @recipes = Recipe.where(:user_id => user)
+
 
   end
 
@@ -25,7 +29,6 @@ class RecipesController < ApplicationController
   end
   def create
     #fix @user to definition to make dynamic based on current user logged in
-    @user = User.find(5)
     @recipe = Recipe.new
     @recipe.label = params[:data]['recipe']['label'];
     @recipe.image = params[:data]['recipe']['image'];
@@ -33,9 +36,9 @@ class RecipesController < ApplicationController
     @recipe.yield = params[:data]['recipe']['yield']
     @recipe.totalTime = params[:data]['recipe']['totalTime']
     @recipe.calories = params[:data]['recipe']['calories']
-    @recipe.user_id = @user.id
+    @recipe.user_id = current_user.id
     @recipe.save
-
+    current_user.recipes << @recipe
   end
 
   def show

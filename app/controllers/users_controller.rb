@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user
+
   def index
     @users = User.all
 
@@ -43,8 +45,7 @@ end
 end
 
   def show
-    @user = User.where(:user_id => @current_user.id)
-
+    @user = User.find params[:id];
 
   end
 
