@@ -3,9 +3,7 @@ class RecipesController < ApplicationController
   before_action :authenticate_user, :only => [:create]
 
   def index
-    #fix @user to definition to make dynamic based on current user logged in
-    user = current_user.id
-    @recipes = Recipe.where(:user_id => user)
+    @recipes = current_user.recipes
 
 
   end

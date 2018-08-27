@@ -3,7 +3,7 @@ class CreateMealplans < ActiveRecord::Migration[5.2]
     create_table :mealplans do |t|
       t.integer :user_id
       t.text :day
-      t.integer :recipe_id
+      t.text :recipe
       t.text :meal
       t.timestamps
     end
