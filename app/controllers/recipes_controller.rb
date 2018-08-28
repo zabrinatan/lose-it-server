@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
 
   def apicall
     q = params[:q]
-    recipe_url = "https://api.edamam.com/search?q=#{q}&app_id=834d210a&app_key=5746ad44a220392bdfb46f4ed052f6e4&from=0&to=20&calories=591-722&health=alcohol-free"
+    recipe_url = "https://api.edamam.com/search?q=#{q}&app_id=834d210a&app_key=5746ad44a220392bdfb46f4ed052f6e4&from=0&to=50"
     recipe_info = HTTParty.get recipe_url
 
 
@@ -34,8 +34,15 @@ class RecipesController < ApplicationController
     @recipe.totalTime = params[:data]['recipe']['totalTime']
     @recipe.calories = params[:data]['recipe']['calories']
     @recipe.user_id = current_user.id
+
+    ingredients_array = params[:data]['recipe']['ingredients']
+    ingredients_array.each do |ingredient|
+      @recipe.ingredients << Ingredient.create(:ingredientLabel => ingredient["text"])
+    end
+
     @recipe.save
     current_user.recipes << @recipe
+
   end
 
   def show
