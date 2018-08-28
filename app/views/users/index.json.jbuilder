@@ -7,5 +7,6 @@ json.users @users do |e|
   json.height e.height
   json.password_digest e.password_digest
 
+  json.recipes e.recipes
 
 end
