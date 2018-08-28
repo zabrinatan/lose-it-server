@@ -88,3 +88,10 @@ b1 = Mealplan.create(
         :day => "Saturday",
         :meal => "Dinner"
       )
+
+  User.destroy_all
+
+  u1 = User.create(
+    :email => 'zabrinatan@hotmail.com',
+    :password => 'chicken'
+  )
