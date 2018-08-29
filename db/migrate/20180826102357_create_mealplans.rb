@@ -5,6 +5,10 @@ class CreateMealplans < ActiveRecord::Migration[5.2]
       t.text :day
       t.text :recipe
       t.text :meal
+      t.float :calories
+      t.float :carbs
+      t.float :fats
+      t.float :proteins
       t.timestamps
     end
   end

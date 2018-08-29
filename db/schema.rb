@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_26_102357) do
+ActiveRecord::Schema.define(version: 2018_08_29_060312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,13 +32,17 @@ ActiveRecord::Schema.define(version: 2018_08_26_102357) do
     t.text "day"
     t.text "recipe"
     t.text "meal"
+    t.float "calories"
+    t.float "carbs"
+    t.float "fats"
+    t.float "proteins"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "nutritions", force: :cascade do |t|
     t.text "label"
-    t.text "quantity"
+    t.float "quantity"
     t.text "unit"
     t.integer "recipe_id"
     t.datetime "created_at", null: false
@@ -52,6 +56,9 @@ ActiveRecord::Schema.define(version: 2018_08_26_102357) do
     t.text "calories"
     t.text "url"
     t.text "totalTime"
+    t.float "carbs"
+    t.float "fats"
+    t.float "proteins"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -72,6 +79,10 @@ ActiveRecord::Schema.define(version: 2018_08_26_102357) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "calories"
+    t.float "carbs"
+    t.float "proteins"
+    t.float "fats"
   end
 
 end

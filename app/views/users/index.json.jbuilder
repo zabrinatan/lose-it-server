@@ -6,6 +6,10 @@ json.users @users do |e|
   json.weight e.weight
   json.height e.height
   json.target_weight e.target_weight
+  json.calories e.calories
+  json.fats e.fats
+  json.proteins e.proteins
+  json.carbs e.carbs
   json.password_digest e.password_digest
   json.recipes e.recipes
 

@@ -1,3 +1,3 @@
 class Nutrition < ApplicationRecord
-  belongs_to :ingredient, :optional => true
+  belongs_to :user, :optional => true
 end

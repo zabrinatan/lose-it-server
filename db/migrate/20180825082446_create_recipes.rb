@@ -7,6 +7,9 @@ class CreateRecipes < ActiveRecord::Migration[5.2]
       t.text :calories
       t.text :url
       t.text :totalTime
+      t.float :carbs
+      t.float :fats
+      t.float :proteins
       t.integer :user_id
       t.timestamps
     end

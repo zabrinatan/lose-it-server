@@ -33,6 +33,9 @@ class RecipesController < ApplicationController
     @recipe.yield = params[:data]['recipe']['yield']
     @recipe.totalTime = params[:data]['recipe']['totalTime']
     @recipe.calories = params[:data]['recipe']['calories']
+    @recipe.carbs = params[:data]['recipe']['totalNutrients']['CHOCDF']['quantity'].to_f
+    @recipe.proteins = params[:data]['recipe']['totalNutrients']['PROCNT']['quantity'].to_f
+    @recipe.fats = params[:data]['recipe']['totalNutrients']['FAT']['quantity'].to_f
     @recipe.user_id = current_user.id
 
     ingredients_array = params[:data]['recipe']['ingredients']

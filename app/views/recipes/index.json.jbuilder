@@ -8,5 +8,8 @@ json.array! @recipes do |e|
   json.calories e.calories
   json.user_id e.user_id
   json.ingredients e.ingredients
+  json.carbs e.carbs
+  json.proteins e.proteins
+  json.fats e.fats
 
 end
