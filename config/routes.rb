@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :ingredients
   resources :users, :defaults => { :format => 'json' }
+  post '/users/update' => 'users#update', :defaults => { :format => 'json'}
   resources :nutritions
   resources :recipes
   get '/mealplans' => 'mealplans#index', :defaults => { :format => 'json' }
